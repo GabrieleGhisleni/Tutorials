@@ -1,0 +1,52 @@
+body{ margin:15px; }
+        
+p, header, footer {
+   margin:10px;
+    padding:20px; 
+    background-color:lightgray;
+    border-radius: 10px;
+}
+
+/* ---------------------------------------- */
+
+.fcol{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.fcol header, footer{
+    text-align: center;
+    background-color: rgb(167, 240, 240);
+    flex: 1!important;
+}
+
+/* -------------- very important ---------- */
+
+.fcol > * { 
+    flex: 5; 
+  }
+
+/* ------------------ as normal---------------------- */
+
+.fcol_2{
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.fcol_2 header, footer{
+    text-align: center;
+    background-color: rgb(167, 240, 240);
+}
+
+.fcol_2 footer{
+    margin-bottom: 0;
+}
+/* -------------- very important ---------- */
+
+.fcol_2 > * { 
+    flex: 1; 
+  }
+
+/* ---------------------------------------- */
+
+.second{font-size: 50px;}

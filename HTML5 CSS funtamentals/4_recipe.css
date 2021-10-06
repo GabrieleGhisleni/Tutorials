@@ -1,0 +1,162 @@
+html, body{
+    font-size: 20px;
+    margin: 0 0 0 0;
+}
+
+
+/* -----------------------*/
+
+.MainTitle{
+    color: black;
+}
+
+.MainTitle h1, footer{
+    text-align: center;
+    background-color: rgb(15, 170, 170);
+    padding: 1.5rem 0 1.5rem 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.MainTitle nav{
+    position: relative;
+    background-color: rgb(154, 241, 241);
+    padding: 0.5rem 0 0.5rem 0;
+    text-align: center;
+
+}
+
+.MainTitle nav ul li{
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 0 0 0 0;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 550;
+}
+
+.MainTitle li:hover{
+    background-color: rgb(248, 166, 44);
+}
+
+.MainTitle nav ul li a{
+    color:black;
+    text-decoration: none;
+}
+
+/* -----------------------*/
+
+.MainArticle{
+    margin: 1rem auto 1rem auto;
+    padding-bottom: 2rem;
+    position: relative;
+    width: 75%;
+    background-color: rgba(233, 154, 126,0.4);
+    overflow: hidden;
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
+.MainArticle header{
+    color: rgb(59, 110, 49);
+    font-weight: 800;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.imgContainer {
+    position: relative;
+    text-align: center;
+    margin: 1em 0em 1em 0em;
+}
+
+.imgContainer img {
+    width: 50%;
+    height: auto;
+    border-radius: 50px;
+    opacity: 90%;
+    padding: 0.7em 0.7em 0.7em 0.7em;
+    background-color: rgba(137, 235, 166,0.6);
+}
+
+.MainArticle h2{
+    font-size: 1.5rem;
+    padding: 0 2rem 1rem 2rem;
+    margin-bottom: 1rem;
+    line-height: 2rem;
+    text-align: center;
+    font-weight: 550;
+}
+
+.MainArticle li{
+    text-align: left;
+    font-size: 1.2rem;
+    padding: 0.2rem 2rem 0 2rem;
+    font-family: system-ui;
+    list-style-position: inside;
+}
+
+.MainArticle ol li{
+    list-style-type: lower-roman;
+}
+
+.MainArticle p{
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+
+.MainArticle ul li::marker {
+    content: "💜    ";
+  }
+
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+
+}
+
+thead th{
+    background-color: rgb(245, 158, 46);
+}
+
+td, th {
+    padding: 1.2rem;
+    background-color: azure;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+tr:nth-child(even) td{ background-color: rgba(233, 255, 37,0.2); }
+
+td:nth-child(odd){
+    border-radius: 50px 0 0px 50px;
+}
+
+td:nth-child(even){
+    border-radius: 0px 50px 50px 0px;
+}
+
+tr:hover td{
+    background-color: orange;
+}
+
+
+
+.centered{
+    width: 30%;
+    margin: 0 auto;
+}
+/* -----------------------*/
+
+footer{
+    opacity: 90%;
+}
+

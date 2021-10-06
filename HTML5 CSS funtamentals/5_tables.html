@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Tables</title>
+    </head>
+    <style>
+        thead{
+            background-color: bisque;
+        }
+        th, td {
+            padding: 30px;
+            /* border: black solid 2px; */
+            border-collapse: collapse;
+        }
+    </style>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>First attribute</th>
+                    <th>Fourth attribute</th>
+                    <th>Third attribute</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hey</td>
+                    <td>Hey</td>
+                    <td rowspan="2">rowspan 2 </td>
+                </tr>
+                <tr>
+                    <td colspan="3">Colspan 2</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Colspan 2</td>
+                    <td> hey 2</td>
+                </tr>
+            </tbody>
+
+        </table>
+        <iframe src="https://www.youtube.com/embed/YE7VzlLtp-4"></iframe>
+    </body>
+</html>
