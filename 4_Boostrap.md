@@ -1,6 +1,6 @@
-Mobile design first! 
+## Mobile design first! 
 
-The more efficient approach is starting by developing html for small screen and then adapt it with larger screen. Boostrap allow to easily handle the responsiveness needed to deal with mobile-phones. we have many elements that helps to do that:
+The more efficient approach is starting by developing html for small screen and then adapt it with larger screen. Bootstrap allow to easily handle the responsiveness needed to deal with mobile-phones. we have many elements that helps to do that:
 
 - Grid System
 - Fluid Images
@@ -17,7 +17,7 @@ Media queries are one of the most important since are CSS technology to apply ba
 }
 ```
 
-- Grid System
+## Grid System
 
 is a very useful tool to responsiveness, first we have to declare in the \<head>: **\<meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>** it ensures that the screen width is set tot he device width and the content is rendered with this width in mind.
 
@@ -53,21 +53,21 @@ Using instead the **container-fluid** there is what so called auto-layout column
 
 <img src='__images/bootstrap_grid.PNG' style='display:block;margin: 10px 0 10px 0'>
 
-it is also possible to expliticly pass the order of the column using \<div class='col-sm-7 order-sm-first'> while using \<div class='row align-items-center'> is used to align the vertical alignment of the content while the horizontal alignment is done usign: \<div class = 'row justify-content-center0>
+it is also possible to explicitly pass the order of the column using \<div class='col-sm-7 order-sm-first'> while using \<div class='row align-items-center'> is used to align the vertical alignment of the content while the horizontal alignment is done using: \<div class = 'row justify-content-center0>
 
 <img src='__images/col_auto.PNG' style='display:block;margin: 10px 0 10px 0'>
 
 Lastly we have to **column offsets**  it means that the element from col sm and more will be moved to the right by one. 
 
-Remeber that is also possible to nesting columns:
+Remember that is also possible to nesting columns:
 
 <img src='__images/nesting.PNG' style='display:block;margin: 10px 0 10px 0'>
 
-Basically is possible to concatenate classes just separiting them with a space such as:
+Basically is possible to concatenate classes just separating them with a space such as:
 
 - \<div class='row row-content'> where row-content is my css class
 
-Rember that:
+Remember that:
 - Justify --> horizontal
 - Align --> Vertical
 
@@ -78,7 +78,7 @@ Rember that:
 
 Web site are rarely single pages. we tend to divide hierarchically the websites like a tree structure. when visiting websites the navbar is typically of the top of on the side of websites and provides the information of the websites. the best practice are to use simple anf user-friendly terms, standardize the navigation, provide indication of the location within the navigation hierarchy and use conventions such as the logo that takes you back to home page.
 
-we also use **breadcrumbs** that indicate the navigation hierarchy in the websites such as: home->menu->appetizers (path based) which are tipically placed blow the primary navigation and above the content.
+we also use **breadcrumbs** that indicate the navigation hierarchy in the websites such as: home->menu->appetizers (path based) which are typically placed blow the primary navigation and above the content.
 
 \<nav class='navbar navbar-light navbar-expand-sm fixed-top bg-primary'>
 
@@ -87,9 +87,20 @@ bootstrap class is called navbar then we have **navbar-expand-sm** which means t
 \<a class='navbar-brand'>Logos</a> // inserting the logo
 
 
-the use of icons is also very useful to make the rendering much better, they are a set of symbols and glyphs and they can be used like regular fonts and there are many icon font packs available. one of the most popular icon fots is called **font awesome**. the grammar to call is:
+the use of icons is also very useful to make the rendering much better, they are a set of symbols and glyphs and they can be used like regular fonts and there are many icon font packs available. one of the most popular icon fonts is called **font awesome**. the grammar to call is:
 
 ```html
 <i class='fa fa-phone'></i>
 ```
 there are also **bootstrap-social** that are social media sign button that helps to show the contacts.
+
+## Buttons and inputs
+
+user interaction need to be supported from the web approaches. the interactions can be facilitated trough three approaches:
+
+- \<a> tags to provide hyperlinks
+- \<buttons> tags to create button
+- \<forms> and \<input> create form and elements
+
+
+
