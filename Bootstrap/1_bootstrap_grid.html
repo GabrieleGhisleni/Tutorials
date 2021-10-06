@@ -4,14 +4,47 @@
         <!-- First Bootstrap -->
         <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!-- favicon -->
+        <!-- font-awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+        <!-- favicon and css-->
+        <link rel='stylesheet' href='/Bootstrap/1_bootstrap_grid.css'>
         <meta charset="utf-8">
     </head>
     <body>
+    
+        <!-- Navigation bar -->
+        <nav class='navbar navbar-light navbar-expand-sm fixed-top bg-primary'>
+            <div class="container">
+                <!-- toggle button when xs, the target is what to display -->
+                <button class='navbar-toggler' type='button' data-toggle='collapse' data-target="#Navbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class='navbar-brand mr-auto' href='#' style='padding-right: 25px;'>Logos</a>
+                <!-- the main navbar that will collapse when the screen is too size  -->
+                <div class='collapse navbar-collapse' id='Navbar'>
+                    <!-- mr-auto is is used to align the navbar into the right -->
+                    <ul class='navbar-nav mr-auto'>
+                        <!-- nav-item, active means that it is highlighted when in that page -->
+                        <li class='nav-item active'>
+                            <a class='nav-link' href='#'>Home
+                                <span class='fa fa-home'></span>
+                                
+                            </a> 
+                        </li>
+                        <li class='nav-item'><a class='nav-link' href='#'>About <span class='fa fa-address-book'></span></a></li>
+                        <li class='nav-item'><a class='nav-link' href='#'>Menu</a> </li>
+                        <li class='nav-item'><a class='nav-link' href='#'>Contact</a> </li>
+                        <li class='nav-item'><a class='nav-link' href='#'>Contact</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header jumbotron stay for important elements -->
         <header class='jumbotron'>
             <div class="container">
-                <div class='row'>
+                <div class='row row-header'>
                     <!-- occupy all the col for xs and half for screen -->
                     <div class='col-12 col-sm-6'> 
                         <h1>Bootstrap Trial</h1>
@@ -28,8 +61,12 @@
         </header>
 
         <div class='container'>
-
-            <div class='row'>
+            <div class='row row-content align-items-center'>
+                <!-- introducing breadcrumb -->
+                <ol class="col-12 breadcrumb">
+                    <li class='breadcrumb-item'><a href='#'></a>Home</li>
+                    <li class='breadcrumb-item active'><a href='#'></a>About us</li>
+                </ol>
                 <!-- xs entire row, small 4 columns, md 3 columns -->
                 <div class='col-12 col-sm-4 col-md-3'>
                     <h3> Super Pizza</h3>
@@ -41,12 +78,10 @@
                         This is the first bootstrap grid trialThis is the first bootstrap grid trial
                         This is the first bootstrap grid trialThis is the first bootstrap grid tria
                         lThis is the first bootstrap grid trial
-
                     </p>
                 </div>
             </div>
-
-            <div class='row'>
+            <div class='row row-content align-items-center'>
                 <!-- Reverse order -->
                 <div class='col-12 col-sm-4 col-md-3 order-last'>
                     <h3> Super Pizza</h3>
@@ -60,40 +95,42 @@
                     </p>
                 </div>
             </div>
-
         </div>
-        <footer>
+
+        <footer class='footer'>
             <div class='container'>
-                <div class='row'>
+                <div class='row justify-content-center'>
                     <!-- 4 colums for xs while 2 columns for small -->
                     <div class='col-4 offset-1 col-sm-2'>
                         <h5>contacs</h5>
-                        <ul>
-                            <li>hey u</li>
-                            <li>hey u</li>
-                            <li>hey u</li>
-                            <li>hey u</li>
+                        <!-- bootstrap style -->
+                        <ul class='list-unstyled'>
+                            <li><a href='#'>Hey contact</a></li>
+                            <li><a href='#'>Hey contact</a></li>
+                            <li><a href='#'>Hey contact</a></li>
+                            <li><a href='#'>Hey contact</a></li>
                         </ul>
                     </div>
                     <div class='col-7 col-sm-5'>
                         <h5>address</h5>
                         <address>
-                            random <br>
-                            random <br>
+                                <!-- large icons -->
+                                <i class="fa fa-phone fa-lg"> 349 440 4796</i> <br>
+                                <i class='fa fa-envelope-o fa-lg'>pr05@live.it</i> <br>
                             random <br>
                             random <br>
                             random <br>
                         </address>
                     </div>
-                    <div class='col-12 col-sm-4'>
-                        <h5>contacs</h5>
-                        <address>
-                            random <br>
-                            random <br>
-                            random <br>
-                            random <br>
-                            random <br>
-                        </address>
+                    <div class='col-12 col-lg-4 align-self-center'>
+                        <div class='text-center'>
+                            <h5>Social</h5>
+                            <address>
+                                <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                                <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                                <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                            </address>
+                        </div>
                     </div>
                 </div>
             </div>

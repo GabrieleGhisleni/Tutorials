@@ -62,3 +62,34 @@ Lastly we have to **column offsets**  it means that the element from col sm and 
 Remeber that is also possible to nesting columns:
 
 <img src='__images/nesting.PNG' style='display:block;margin: 10px 0 10px 0'>
+
+Basically is possible to concatenate classes just separiting them with a space such as:
+
+- \<div class='row row-content'> where row-content is my css class
+
+Rember that:
+- Justify --> horizontal
+- Align --> Vertical
+
+
+> <a href='https://getbootstrap.com/docs/4.0/layout/grid/'>Grid references</a>
+
+## Navigation bar
+
+Web site are rarely single pages. we tend to divide hierarchically the websites like a tree structure. when visiting websites the navbar is typically of the top of on the side of websites and provides the information of the websites. the best practice are to use simple anf user-friendly terms, standardize the navigation, provide indication of the location within the navigation hierarchy and use conventions such as the logo that takes you back to home page.
+
+we also use **breadcrumbs** that indicate the navigation hierarchy in the websites such as: home->menu->appetizers (path based) which are tipically placed blow the primary navigation and above the content.
+
+\<nav class='navbar navbar-light navbar-expand-sm fixed-top bg-primary'>
+
+bootstrap class is called navbar then we have **navbar-expand-sm** which means that for screen that are sm and larger the navigation bar will be enlarged while **fixed-top** means that the nav-bar will be stay always at the top.
+
+\<a class='navbar-brand'>Logos</a> // inserting the logo
+
+
+the use of icons is also very useful to make the rendering much better, they are a set of symbols and glyphs and they can be used like regular fonts and there are many icon font packs available. one of the most popular icon fots is called **font awesome**. the grammar to call is:
+
+```html
+<i class='fa fa-phone'></i>
+```
+there are also **bootstrap-social** that are social media sign button that helps to show the contacts.
