@@ -102,5 +102,36 @@ user interaction need to be supported from the web approaches. the interactions 
 - \<buttons> tags to create button
 - \<forms> and \<input> create form and elements
 
+## Tables
 
+they are meant to display tabular data in a web page.
 
+```html
+<table class='table'>
+
+</table>
+```
+
+there are different different bootstrap tables such as:
+- "table-striped" for zebra striped rows
+- "table-bordered" for borders to table cells
+- "table-hover" for highlighting rows when you hover over a row
+- "table-sm" for cutting the cell padding in half
+- "table-responsive" for making the table responsive (scrolling)
+
+individual cell and rows can also be colored such as:
+- \<tr class='bg-success'> .. bh-danger and so on.
+
+another components available elements in the **bootstrap card**. they are similar to the tables but they allow more flexibility.
+
+## Images
+
+bootstrap image classes provide a bounch of classes to apply to the image tag to render the image as responsive as possible such as **img-fluid**. you can also use a **img-thumbnail** which thumbnail the image and also elements to modfiy the shape of the elements such as **rounded cornes or rounded-circle**. they work very well together with the card class.
+
+a different way is the **media** object and also the **responsive embeded** wich render the video such:
+
+```html
+<div class='embed-responsive embed-responsive-18by9'>
+    <iframe class='embed-responsive-item' src='https/..'> </iframe>
+</div>
+```
