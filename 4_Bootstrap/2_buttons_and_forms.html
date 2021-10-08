@@ -41,9 +41,40 @@
                     <li class='nav-item'><a class='nav-link' href='#'>Contact</a> </li>
                     <li class='nav-item'><a class='nav-link' href='#'>Contact</a> </li>
                 </ul>
+                <span class='navbar-text'>
+                    <a data-toggle='modal' data-target="#loginModal">
+                        <span class='fa fa-sign-in'></span>
+                    </a>
+                </span>
             </div>
         </div>
     </nav>
+
+    <!-- Modal -->
+    <div id='loginModal' class='modal fade' role='dialog'>
+        <div class='modal-dialog modal-lg' role='content'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <h4 class='modal-title'>Login</h4>
+                    <button type='button' class='close' data-dismiss='modal'>
+                        &times;
+                    </button>
+                </div>
+                <div class='modal-body'>
+                    <form>
+                        <div class='form-row'>
+                            <div class='form-group'>
+                                <label>Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+                        <button class='btn btn-primary' data-dismiss='modal'>Sign in</button>
+                        <button class='btn btn-secondary'data-dismiss='modal'>Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Jumbotron is used to highlight important part such header -->
     <header class="jumbotron">
@@ -54,8 +85,15 @@
                     <h1>Ristorante con Fusion</h1>
                     <p>We take inspiration from the World's best cuisines, and create a unique fusion experience. Our lipsmacking creations will tickle your culinary senses!</p>
                 </div>
-                <div class="col-12 col-sm align-self-center">
+                <div class="col-12 col-sm-3 align-self-center">
                     <img src='../__images/img/logo.png' class='img-fluid'>
+                </div>
+                <div class='col align-self-center'>
+                    <a role='button' class='btn btn-block btn-warning' 
+                    data-toggle="tooltip" data-html='true' title='or call us at <br>myNumber</br>'
+                    data-placement='bottom'>
+                        Reserve table
+                    </a>
                 </div>
             </div>
         </div>
@@ -70,6 +108,91 @@
             <div class="col-12">
                 <h3>Contact Us</h3>
                 <hr>
+            </div>
+        </div>
+
+        <!-- tabs -->
+        <div class='row row-content'>
+            <div class='col-12'>
+                <h2>Corporate Leaders</h2>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#peter" role="tab" data-toggle="tab">Peter Pan, CEO</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#peter2" role="tab"  data-toggle="tab">Danny Witherspoon, CFO</a>
+                    </li>
+                </ul>
+                <div class='tab-content'>
+                    <div role='tabpanel' class='tab-pane fade show active' id='peter'> 
+                        <h3>Peter Pan <small>Chied epicurios</small></h3>
+                        <p>
+                            somethingsomethingsomethingsomethingsomething
+                            somethingsomethingsomethingsomethingsomething
+                            somethingsomethingsomethingsomethingsomething
+                            somethingsomethingsomethingsomethingsomething
+                        </p>
+                    </div>
+                    <div role='tabpanel' class='tab-pane fade' id='peter2'> 
+                        <h3>Peter second <small>help</small></h3>
+                        <p>
+                            somethingsomethingsomethingsomethingsomething
+                            somethingsomethingsomethingsomethingsomething
+                            somethingsomethingsomethingsomethingsomething
+                            somethingsomethingsomethingsomethingsomething
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accordion -->
+        <div class='row row-content'>
+            <div class='col-12'>
+                <div id='accordion'>
+                    <div class="card">
+                        <div class="card-header" role="tab" id="dannyhead">
+                        <h3 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" data-target="#danny">
+                            Dhanasekaran Witherspoon <small>Chief Food Officer</small>
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="collapse" id="danny" data-parent="#accordion">
+                        <div class="card-body">
+                            <p class="d-none d-sm-block">. . .</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                        <div class="card-header" role="tab" id="agumbehead">
+                        <h3 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" data-target="#agumbe">
+                            Agumbe Tang <small>Chief Taste Officer</small>
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="collapse" id="agumbe" data-parent="#accordion">
+                        <div class="card-body">
+                            <p class="d-none d-sm-block">. . .</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                        <div class="card-header" role="tab" id="albertohead">
+                        <h3 class="mb-0">
+                            <a class="collapsed" data-toggle="collapse" data-target="#alberto">
+                            Alberto Somayya <small>Executive Chef</small>
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="collapse" id="alberto" data-parent="#accordion">
+                        <div class="card-body">
+                            <p class="d-none d-sm-block">. . .</em></p>
+                        </div>
+                    </div>
+                </div>
+                </div>
             </div>
         </div>
 
@@ -267,7 +390,11 @@
                     <img class='d-flex mr-3 img-thumbnail align-self-center' src='../__images/img/buffet.png'>
                     <!-- body image -->
                     <div class='media-body'>
-                        <h3>Utthapizze</h3>
+                        <!-- badges -->
+                        <h3>Utthapizze
+                            <span class='badge badge-danger'>Hot</span>
+                            <span class='badge badge-pill badge-secondary'>$4.99</span>
+                        </h3>
                         <p class='d-none d-sm-block'>Hey Hey Hey Hey Hey Hey </p> 
                     </div>
                 </div>
@@ -322,7 +449,11 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    })
+</script>
 </body>
 
 </html>

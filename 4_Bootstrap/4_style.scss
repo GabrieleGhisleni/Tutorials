@@ -1,0 +1,55 @@
+// colors
+
+$lt-gray: #ddd;
+$background-dark: blue;
+
+// height
+$df-heigh: 50px;
+$white: white;
+$blue: #ddd;
+$background-dark: #512da8;
+$height: 300px;
+
+@mixin zero-margin{
+    margin:0px auto;
+    background:$white;
+    height: $height*2
+}
+
+@mixin zero-margin-and-padding ($pd-top, $pd-bottom){
+    margin:0px auto;
+    padding: $pd-top, $pd-bottom;
+    background:$white;
+}
+
+.myCustomClass{
+    @include zero-margin;
+    background: $background-dark
+}
+
+//nested classes
+
+.mycarousel{
+    @include zero-margin-and-padding(10,10);
+    background-color: $background-dark;
+    .carousel_item{  //nested
+        color:red;
+    }
+}
+
+@mixin zero-margin($pad_1, $pad_2) {
+    margin: 0px auto;
+    padding: $pad_1 $pad_2;
+}
+
+.row-header{
+    @include zero-margin(0, 50);
+    background-color: $background-dark;
+    color: white;
+}
+
+body{
+    background-color: yellow;
+}
+
+// ssass file.scss file.css
