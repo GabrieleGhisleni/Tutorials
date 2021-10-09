@@ -1,0 +1,5 @@
+/node_modules
+/5_React/node_modules
+
+*.json
+*DS_STORE
