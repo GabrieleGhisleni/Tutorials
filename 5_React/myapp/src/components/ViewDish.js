@@ -1,15 +1,14 @@
 import React, {Component} from 'react';
-import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
+import {Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap';
 
 class DishDetail extends Component{
     constructor(props){
         super(props);
-        console.log('dish deital', this.props)
     }
 
     render(){
         let currentDish = this.props.selectedDish;
-        console.log('this.props.selectedDish=', currentDish)
+        console.log('Insiede ViewDish this.props.selectedDish', currentDish)
         if (currentDish != null){
             return (
                 <div className='row'>

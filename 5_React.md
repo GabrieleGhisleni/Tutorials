@@ -253,3 +253,38 @@ class Menu extends Component{
     }
 }
 ```
+
+## Component types
+
+- Presentation vs Container
+- Skinny vs Fat
+- Dumb vs Smart
+- Stateless vs Stateful
+
+- Presentational components
+
+are mainly concerned with rendering the 'view', render the view based on the data tha is passed to them in props. they do not maintain their own local state! purely container for views.
+
+- Container components
+
+it is used to track the state, they are responsible fro making things work (data fetching, state updates and so on). **they provide the data to the presentational components!**.  purely container for data.
+
+## Hierarchy of props
+
+Main.js
+```js
+
+onDishSelect(dishId){
+this.setState({ selectedDish: dishId})
+console.log('updated selectedDish' , this.state.selectedDish)
+
+....
+
+<Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)}/>
+```   
+
+Menu.js
+
+```js
+<Card onClick={()=> this.props.onClick(dish.id)}>
+```
