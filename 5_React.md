@@ -139,22 +139,46 @@ you can also pass attribute to the class such that \<Menu dishes={this.state.dis
 
 ## Map Function 
 ```js
-const menu = this.state.dishes.map((dish) => {
-    return (
-        <div key={dish.id} className='col-12 mt-5'>
-            // tag li say that each of the element will have the tag 'li'
-            <Media tag='li'>
-                <Media left middle>
-                    <Media object src={dish.image} alt={dish.description} />
-                </Media>
-                <Media body className='ml-5'>
-                    <Media heading>{dish.name}</Media>
-                    <p>{dish.description}</p>
-                </Media>
-            </Media>
-        </div>
-    )
-}); // list with a function that perform a operation on each elements
+
+class Menu extends Component{
+    constructor(props){
+        super(props);
+        // receiving all the props from the parent
+    }
+
+    render(){
+        // for every dish return => function
+        const menu = this.props.dishes.map((dish) => {
+            return (
+                <div key={dish.id} className='col-12 mt-5'> 
+                
+                    {/* tag li say that each of the element will have the tag 'li' */}
+
+                    <Media tag='li'>
+                        <Media left middle>
+                            <Media object src={dish.image} alt={dish.description} />
+                        </Media>
+                        <Media body className='ml-5'>
+                            <Media heading>{dish.name}</Media>
+                            <p>{dish.description}</p>
+                        </Media>
+                    </Media>
+                </div>
+            )
+        }); 
+
+        return(
+            <div className='container'>
+                <div class='row'>
+                    {/* // Media that list so the element inside will be a ordered list! */}
+                    <Media list>
+                        {menu}
+                    </Media>
+                </div>
+            </div>
+        );
+    }
+}
 ```
 
 ## Handling events
@@ -162,7 +186,70 @@ const menu = this.state.dishes.map((dish) => {
 handling events is similar to the wau you handle events on DOM elements:
 
 ```js
+// when click calling the function!
 <Card bClick={() => this.onDishSelect(dis)}>
 ```
 
 - list are handled similar to JavaScript as we seen before with the map function. **for each item is very important to specify the keys.**
+
+## Cards and lifting up of props
+
+```js
+class Menu extends Component{
+    constructor(props) {
+        super(props);
+        // new property called selectedDish
+        this.state = {
+            selectedDish: null
+        }
+    }
+
+    onDishSelect(dish){
+        this.setState({ selectedDish:dish })
+    }
+
+    renderDish(dish){
+        if (dish != null){
+            return (
+                <Card>
+                    <CardImg width='100%' src={dish.image} alt={dish.name} />
+                    <CardBody>
+                        <CardTitle>{dish.name}</CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
+            )
+        }
+        else{ // if null return an empty div
+            return (<div></div>)
+        }
+    }
+
+    render(){
+        // for every dish return => function
+        const menu = this.props.dishes.map((dish) => {
+            return (
+                <div key={dish.id} className='col-12 col-md-5 m-2'> 
+                    <Card onClick={() => this.onDishSelect(dish)}>
+                        <CardImg width='100%' src={dish.image} alt={dish.name} />
+                            <CardImgOverlay>
+                                <CardTitle className='text-center'>{dish.name}</CardTitle>
+                            </CardImgOverlay>
+                    </Card>
+                </div>
+            )
+        }); 
+
+        return(
+            <div className='container'>
+                <div class='row'>
+                    {menu}
+                </div>
+                <div className='row'>
+                    {this.renderDish(this.state.selectedDish)}
+                </div>
+            </div>
+        );
+    }
+}
+```

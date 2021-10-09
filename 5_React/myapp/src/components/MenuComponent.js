@@ -1,44 +1,49 @@
 import React, {Component} from 'react';
-import  {Media} from 'reactstrap';
+import {Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle} from 'reactstrap';
+import DishDetail from './ViewDish';
 
 class Menu extends Component{
-    constructor(props){
+    constructor(props) {
         super(props);
-        // receiving all the props from the parent
+        // new property called selectedDish
+        this.state = {
+            selectedDish: null
+        }
+    }
+
+    // it is invoked lastly! after the rendering!
+
+    onDishSelect(dish){
+        this.setState({ selectedDish:dish })
+        console.log('menu.this.state.selectedDish != null', this.state.selectedDish != null)
     }
 
     render(){
         // for every dish return => function
+        console.log(this.props)
         const menu = this.props.dishes.map((dish) => {
             return (
-                <div key={dish.id} className='col-12 mt-5'> 
-                
-                    {/* tag li say that each of the element will have the tag 'li' */}
-
-                    <Media tag='li'>
-                        <Media left middle>
-                            <Media object src={dish.image} alt={dish.description} />
-                        </Media>
-                        <Media body className='ml-5'>
-                            <Media heading>{dish.name}</Media>
-                            <p>{dish.description}</p>
-                        </Media>
-                    </Media>
+                <div key={dish.id} className='col-12 col-md-5 m-2'> 
+                    <Card onClick={() => this.onDishSelect(dish)}>
+                        <CardImg width='100%' src={dish.image} alt={dish.name} />
+                            <CardImgOverlay>
+                                <CardTitle className='text-center'>{dish.name}</CardTitle>
+                            </CardImgOverlay>
+                    </Card>
                 </div>
             )
         }); 
-
+        
         return(
             <div className='container'>
-                <div class='row'>
-                    {/* // Media that list so the element inside will be a ordered list! */}
-                    <Media list>
-                        {menu}
-                    </Media>
+                <div className='row'>
+                    {menu}
                 </div>
+                <DishDetail selectedDish={this.state.selectedDish}/>
             </div>
         );
     }
 }
+
 
 export default Menu;
