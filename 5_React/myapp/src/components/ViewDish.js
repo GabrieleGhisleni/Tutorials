@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import {Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap';
+import {Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
-
-function RenderDish(currentDish){
-    console.log('CurrentDish', currentDish)
+function RenderDish(currentDish,comment){
+    console.log('inside renderdish', currentDish, comment)
     return(
     <div className='row'>
         <div className='container'>
@@ -19,7 +19,7 @@ function RenderDish(currentDish){
                 </div>
                 <div className='col-12 col-md-5 text-justify'>
                     <h1 style={{margin: '20px'}}>Comments:</h1>
-                    <p>{currentDish.comments}</p>
+                    <p>{comment.comment}</p>
                 </div>
             </div>
         </div>
@@ -29,11 +29,24 @@ function RenderDish(currentDish){
 }
 
 const DishDetail = (props) => {
-    let dish = props.selectedDish
-    console.log('props', props)
+    let dish = props.dish
+    let comment = props.comments
+    console.log("inside DishDetail.", dish, comment)
     if (dish != null){
         return(
-            RenderDish(dish)
+            <div className='container'>
+                <div className='row'>
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
+                    <BreadcrumbItem active><Link to='/menu'>{props.dish.name}</Link></BreadcrumbItem>
+                </Breadcrumb>
+                </div>
+                <div className='col-12'>
+                    <h3>{props.dish.name}</h3>
+                    {RenderDish(dish,comment)}
+                </div>
+            </div>
         )
     }
     else { 

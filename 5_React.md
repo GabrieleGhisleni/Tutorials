@@ -364,5 +364,34 @@ in order to determine matcgning components we user \<Route> and \<Switch> compon
 
 
 ```js
-
+const HomePage = () => {
+    return (
+    // it is only one wich has features === true.
+    <Home 
+        dish={this.state.dishes.filter((dish) => dish.featured)[0]}
+        promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
+        leader={this.state.leaders.filter((leader) => leader.featured)[0]}
+    />
+    )
+}
+<Switch>
+    <Route path='/home' component={HomePage}/>
+    {/* since it requires argument we have to pass it as a function! */}
+    <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes}/>}/>
+    <Redirect to='/home' />
+</Switch>
 ```
+
+Router parameters specified in the path specification as a token using the *:* such as: **menu/:id**. 
+they are specified using this syntax:
+
+```js
+<Link to{`/menu/${dish.id}`}>
+```
+
+## Single page application
+
+<img src='__images/singlepage.PNG'>
+
+
+## Forms
