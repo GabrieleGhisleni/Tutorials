@@ -374,6 +374,7 @@ const HomePage = () => {
     />
     )
 }
+    
 <Switch>
     <Route path='/home' component={HomePage}/>
     {/* since it requires argument we have to pass it as a function! */}
@@ -385,7 +386,24 @@ const HomePage = () => {
 Router parameters specified in the path specification as a token using the *:* such as: **menu/:id**. 
 they are specified using this syntax:
 
+
 ```js
+const DishWithId = ({match}) => {
+    console.log(match)
+    let dish = this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]
+    let comment = this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))[0]
+    console.log("comment in main", comment)
+    return (
+    <DishDetail 
+        dish={dish}
+        comments={comment}
+    />
+    );
+}
+
+<Route path='/menu/:dishId' component={DishWithId}/>
+
+
 <Link to{`/menu/${dish.id}`}>
 ```
 
@@ -395,3 +413,116 @@ they are specified using this syntax:
 
 
 ## Forms
+
+```js
+// form elements
+import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import {Link} from 'react-router-dom';
+
+// since we are going to use form we transform this into a class so to save elements
+
+class Contact extends Component{
+    constructor(props){
+        super(props);
+        this.state= {
+            firstName: '',
+            lastName: '',
+            telNum: '',
+            email: '',
+            agree: false,
+            contactType: 'Tel'
+        }
+        // bind to this object!
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInput = this.handleInput.bind(this);
+
+
+    }
+    handleInput(event){
+        // which input as been changed
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        console.log("name, value", name, value, this.state.firstName)
+        this.setState({
+          [name]: value
+        });
+    }
+
+    
+
+    handleSubmit(event){
+        console.log('current stat', JSON.stringify(this.state))
+        alert('current stat', (this.state))
+        // avoid refresh page!!
+        event.preventDefault()
+    }
+
+    render(){
+        return(<div className='row row-content'>
+                    <div className='col-12'>
+                        <h3>Send feedback</h3>
+                    </div>
+                    <div className='col-12 col-md-9'>
+                    <Form onSubmit={this.handleSubmit}>
+                        <FormGroup row>
+                            {/*Label md={2} 2 columns! */}
+                            
+                            <Label htmlFor='firstName' md={2}>First Name</Label>
+                            <Col md={10}>
+                                <Input type='text' id='firstName' onChange={this.handleInput}
+                                name='firstName' placeholder='first name' value={this.state.firstName}/>
+                            </Col>
+
+                            <Label htmlFor='lastName' md={2}>last Name</Label>
+                            <Col md={10}>
+                                <Input type='text' id='lastName' onChange={this.handleInput}
+                                name='lastName' placeholder='last name' value={this.state.lastName}/>
+                            </Col>
+                            <Label htmlFor='telNum' md={2}>tel</Label>
+                            <Col md={10}>
+                                <Input type='number' id='telnum' onChange={this.handleInput}
+                                name='telNum' placeholder='tel' value={this.state.telNum}/>
+                            </Col>
+
+                            <Label htmlFor='email' md={2}>email</Label>
+                            <Col md={10}>
+                                <Input type='email' id='email' onChange={this.handleInput}
+                                name='email' placeholder='tel' value={this.state.email}/>
+                            </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                {/* 6 columns treat it as js object */}
+                                <Col md={{size:6, offset:2}}>
+                                    {/* checkbox */}
+                                    <FormGroup check>
+                                        <Label check>
+                                            <Input type='checkbox' onChange={this.handleInput} name='agree' checked={this.state.agree}/>
+                                            {' '} may we contact you?
+                                        </Label>
+                                    </FormGroup>
+                            
+                                </Col>
+                                <Col md={{size:3, offset:1}}>
+                                    <Input type='select' onChange={this.handleInput} name='contactType' value={this.state.contactType}>
+                                        <option>Tel.</option>
+                                        <option>Email</option>
+                                    </Input>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row>
+                                <Col md={{size:10, offset:2}}>
+                                    <Button type='submit' color='primary'>Submit</Button>
+                                </Col>
+                            </FormGroup>                       
+                    </Form>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+export default Contact;
+
+```
