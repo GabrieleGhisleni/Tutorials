@@ -6,6 +6,9 @@ import DishDetail from './ViewDish';
 import Header from './Header';
 import Footer from './Footer';
 
+// React Router
+import Home from './Home';
+import {Switch, Route, Redirect} from 'react-router-dom';
 
 
 class Main extends Component {
@@ -23,15 +26,29 @@ class Main extends Component {
   }
 
   render (){
+    const HomePage = () => {
+      return (
+        <Home />
+      )
+    }
+
     return (
       <div>
         <Header />
-        <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)}/>
-        {/* passing directly the only object having the particular id founded before */}
-        <DishDetail selectedDish={this.state.dishes.filter((dish) => dish.id == this.state.selectedDish)[0]} />
+        <Switch>
+          <Route path='/home' component={HomePage}/>
+          {/* since it requires argument we have to pass it as a function! */}
+          <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes}/>}/>
+          <Redirect to='/home' />
+        </Switch>
         <Footer />
       </div>
   )};
 }
 
 export default Main;
+
+
+// {/* <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)}/>
+// {/* passing directly the only object having the particular id founded before */}
+// <DishDetail selectedDish={this.state.dishes.filter((dish) => dish.id == this.state.selectedDish)[0]} /> */}
