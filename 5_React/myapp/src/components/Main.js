@@ -1,5 +1,5 @@
 import {Component} from 'react';
-
+import React, { useState, useRef, useCallback } from "react";
 // Custom components
 import Menu from './MenuComponent';
 import DishDetail from './ViewDish';
@@ -9,14 +9,13 @@ import Contact from './Contact';
 import Home from './Home';
 
 // Redux import
-import { Reducer } from '../redux/reducer';
 import {connect} from 'react-redux';
+import {addComment} from '../redux/ActionCreators';
 
 // React Router (withRouter is used for Redux)
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 
 const mapStateToProps = state => {
-
     return ({
       comments: state.comments,
       leaders: state.leaders,
@@ -25,9 +24,14 @@ const mapStateToProps = state => {
     });
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  addComment: (dishId, rating, author,comment) => dispatch(addComment(dishId, rating, author,comment))
+})
 
 
 class Main extends Component {
+
+
   render (){
     const HomePage = () => {
       return (
@@ -44,12 +48,12 @@ class Main extends Component {
     const DishWithId = ({match}) => {
       console.log(match)
       let dish = this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]
-      let comment = this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))[0]
-      console.log("comment in main", comment)
+      let comment = this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))
       return (
         <DishDetail 
           dish={dish}
           comments={comment}
+          addComment = {this.props.addComment}
         />
       );
     }
@@ -72,7 +76,7 @@ class Main extends Component {
 
 // wrap the main with connect to use redux
 
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
 
 
 // {/* <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)}/>

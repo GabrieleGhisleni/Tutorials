@@ -31,3 +31,15 @@ address{
 .navbar-dark {
     background-color: #512DA8;
 }
+
+.comments{
+    background-color: rgb(201, 242, 243);
+    margin:20px;
+    padding:10px;
+    border-radius: 20px;
+}
+
+.comments p{
+    padding:0px;
+    margin:0px
+}

@@ -580,10 +580,55 @@ the state is stored in a plain JS object while the action is a plain JS objcet w
 
 > react-redux; redux; react-redux-form packges
 
-### LocalForm
-```js
+### Redux configuration
 
+```js
+import {ConfigureStore} from './redux/configureStore'
+const store = ConfigureStore();
+      <Provider store={store}>
 ```
 
+```js
+import { Reducer, initialState } from "./reducer";
+import {createStore} from 'redux';
 
+export const ConfigureStore = () => {
+    const store = createStore(
+        Reducer,
+        initialState
+    );
+    return store;
+}
+```
+```js
+// static json
+import  {DISHES}  from '../shared/dishes';
+import  {COMMENTS}  from '../shared/comments';
+import  {LEADERS}  from '../shared/leader';
+import  {PROMOTIONS}  from '../shared/promotions';
 
+export const initialState = {
+    comments: COMMENTS,
+    leaders: LEADERS,
+    promotions: PROMOTIONS,
+    dishes : DISHES,
+}
+
+export const Reducer = (state=initialState, action) => {
+    return(
+        state
+    );
+};
+```
+```js
+const mapStateToProps = state => {
+
+    return ({
+      comments: state.comments,
+      leaders: state.leaders,
+      promotions: state.promotions,
+      dishes : state.dishes,
+    });
+}
+export default withRouter(connect(mapStateToProps)(Main));
+```
