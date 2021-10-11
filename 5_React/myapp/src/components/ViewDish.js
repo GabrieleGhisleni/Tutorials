@@ -3,6 +3,7 @@ import {Card, Modal ,ModalHeader, ModalBody, CardImg, CardText, CardBody, CardTi
 import {Link} from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
 import {Control, LocalForm, Errors} from 'react-redux-form';
+import {Loading} from './Loading';
 
 class RenderComment extends Component{
     constructor(props){
@@ -117,28 +118,47 @@ function RenderDish({currentDish, comment, dishId, addComment}){
 }
 
 const DishDetail = (props) => {
-    let dish = props.dish
-    let comment = props.comments
-    if (dish != null){
-        return(
+    if (props.isLoading){
+        return (
             <div className='container'>
                 <div className='row'>
-                <Breadcrumb>
-                    <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-                    <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
-                    <BreadcrumbItem active><Link to='/menu'>{props.dish.name}</Link></BreadcrumbItem>
-                </Breadcrumb>
-                </div>
-                <div className='col-12'>
-                    <h3 className='text-center' style={{margin:"5px", padding:'10px', backgroundColor:'lightblue', borderRadius:'20px'}}>{props.dish.name}</h3>
-                    <div style={{marginTop:'30px'}}>
-                        <RenderDish currentDish={dish} 
-                        comment= {comment}
-                        addComment={props.addComment} 
-                        dishId={dish.id}/>
-                    </div>
+                    <Loading />
                 </div>
             </div>
+        );
+    }
+    else if (props.dishErrMsg){
+        return (
+        <div className='container'>
+            <div className='row'>
+                <h4>{props.dishErrMsg}</h4>
+            </div>
+        </div>
+
+        );
+    }
+    else if (props.dish != null) { 
+    let dish = props.dish
+    let comment = props.comments
+    return(
+        <div className='container'>
+            <div className='row'>
+            <Breadcrumb>
+                <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                <BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
+                <BreadcrumbItem active><Link to='/menu'>{props.dish.name}</Link></BreadcrumbItem>
+            </Breadcrumb>
+            </div>
+            <div className='col-12'>
+                <h3 className='text-center' style={{margin:"5px", padding:'10px', backgroundColor:'lightblue', borderRadius:'20px'}}>{props.dish.name}</h3>
+                <div style={{marginTop:'30px'}}>
+                    <RenderDish currentDish={dish} 
+                    comment= {comment}
+                    addComment={props.addComment} 
+                    dishId={dish.id}/>
+                </div>
+            </div>
+        </div>
         )
     }
     else { 

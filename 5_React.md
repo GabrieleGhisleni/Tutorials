@@ -632,3 +632,6 @@ const mapStateToProps = state => {
 }
 export default withRouter(connect(mapStateToProps)(Main));
 ```
+
+
+> install redux-tunk; redux-logger
