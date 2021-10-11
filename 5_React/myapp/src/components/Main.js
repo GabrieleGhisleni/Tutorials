@@ -7,11 +7,8 @@ import Header from './Header';
 import Footer from './Footer';
 import Contact from './Contact';
 
-// static json
-import  {DISHES}  from '../shared/dishes';
-import  {COMMENTS}  from '../shared/comments';
-import  {LEADERS}  from '../shared/leader';
-import  {PROMOTIONS}  from '../shared/promotions';
+// Redux import
+import { Reducer } from '../redux/reducer';
 
 // React Router
 import Home from './Home';
@@ -19,17 +16,6 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 
 
 class Main extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      comments: COMMENTS,
-      leaders: LEADERS,
-      promotions: PROMOTIONS,
-      dishes : DISHES,
-      selectedDish: null
-    }
-  };
-
   onDishSelect(dishId){
     this.setState({ selectedDish: dishId})
     console.log('updated selectedDish' , this.state.selectedDish)

@@ -526,3 +526,59 @@ class Contact extends Component{
 export default Contact;
 
 ```
+
+
+## Model view 
+
+design patterns is a well-documented solution to a recurring problem, if there is a well documentation while fixed again and again the same problem? tern offer reusable solution to commonly occurring problems. 
+
+the Model-View-Controller Framer allow to isolation the domain logic from user interface, this permits independent development testing and maintenance, this model is composed by three components: model, view, controller.
+
+the Model:
+
+- manages the behavior and data of the application domain
+- responds to requests for information about its state
+- responds to instructions to change state (usually from the controller)
+
+
+The View:
+
+- Renders the model into a form suitable for interaction, typically a user interface element.
+- A viewport typically has a one to one correspondence with a display surface and knows how to render it.
+
+- Controller:
+
+- Receives user input and initiates a respond by making calls on a model objects
+
+### Flux
+
+it is a software engineering patter: 
+
+<img src ='../Frontend/__images/flux.PNG'>
+
+in flux architecture any action must be done trough the dispatcher. new actions propagated trough the system in reponse to user interactions centralized by the dispatcher. no other way to change the state of the application.
+
+### Redux
+
+**Consistent way to support the state!** it makes state mutations predictable. there is a single source of truth, only one storage. the state is read-only, changes should only be done trough actions. changes are made with pure functions they take prvious state and action and return next state (no mutation of the previous state, it will return a new state but do not modify the previous).
+
+it allows easy to implement:
+- Logging
+- API handling
+- Undo/redo
+- State persistence
+
+the state is stored in a plain JS object while the action is a plain JS objcet with a type field that specifies how to change something in the state. the reducer is a pure fucntions that take the current state and action and return a new state. 
+
+#### redux store
+
+- created using createStore()
+- supplies three methods:
+    - dispatch() states state update with the privded action object
+    - geState() return the current stored state value
+    - subscribe()
+
+> react-redux; redux packges
+
+
+
