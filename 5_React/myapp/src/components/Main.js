@@ -6,37 +6,45 @@ import DishDetail from './ViewDish';
 import Header from './Header';
 import Footer from './Footer';
 import Contact from './Contact';
+import Home from './Home';
 
 // Redux import
 import { Reducer } from '../redux/reducer';
+import {connect} from 'react-redux';
 
-// React Router
-import Home from './Home';
-import {Switch, Route, Redirect} from 'react-router-dom';
+// React Router (withRouter is used for Redux)
+import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
+
+const mapStateToProps = state => {
+
+    return ({
+      comments: state.comments,
+      leaders: state.leaders,
+      promotions: state.promotions,
+      dishes : state.dishes,
+    });
+}
+
 
 
 class Main extends Component {
-  onDishSelect(dishId){
-    this.setState({ selectedDish: dishId})
-    console.log('updated selectedDish' , this.state.selectedDish)
-  }
-
   render (){
     const HomePage = () => {
       return (
         // it is only one wich has features === true.
         <Home 
-          dish={this.state.dishes.filter((dish) => dish.featured)[0]}
-          promotion={this.state.promotions.filter((promo) => promo.featured)[0]}
-          leader={this.state.leaders.filter((leader) => leader.featured)[0]}
+          dish={this.props.dishes.filter((dish) => dish.featured)[0]}
+          promotion={this.props.promotions.filter((promo) => promo.featured)[0]}
+          leader={this.props.leaders.filter((leader) => leader.featured)[0]}
         />
+
       )
     }
 
     const DishWithId = ({match}) => {
       console.log(match)
-      let dish = this.state.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]
-      let comment = this.state.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))[0]
+      let dish = this.props.dishes.filter((dish) => dish.id === parseInt(match.params.dishId,10))[0]
+      let comment = this.props.comments.filter((comment) => comment.dishId === parseInt(match.params.dishId,10))[0]
       console.log("comment in main", comment)
       return (
         <DishDetail 
@@ -52,7 +60,7 @@ class Main extends Component {
         <Switch>
           <Route path='/home' component={HomePage}/>
           {/* since it requires argument we have to pass it as a function! */}
-          <Route exact path='/menu' component={() => <Menu dishes={this.state.dishes}/>}/>
+          <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes}/>}/>
           <Route path='/menu/:dishId' component={DishWithId}/>
           <Route exact path='/contact' component={Contact}/>
           <Redirect to='/home' />
@@ -62,7 +70,9 @@ class Main extends Component {
   )};
 }
 
-export default Main;
+// wrap the main with connect to use redux
+
+export default withRouter(connect(mapStateToProps)(Main));
 
 
 // {/* <Menu dishes={this.state.dishes} onClick={(dishId) => this.onDishSelect(dishId)}/>

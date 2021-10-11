@@ -578,7 +578,12 @@ the state is stored in a plain JS object while the action is a plain JS objcet w
     - geState() return the current stored state value
     - subscribe()
 
-> react-redux; redux packges
+> react-redux; redux; react-redux-form packges
+
+### LocalForm
+```js
+
+```
 
 
 
