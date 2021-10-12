@@ -4,7 +4,7 @@ import { Loading } from "./Loading";
 import {baseUrl} from './../shared/baseUrl'
 
 function RenderCard({item, isLoading, errMsg}){
-    console.log('Inside render car',item, isLoading, errMsg)
+
 
     if (isLoading){
         return(
@@ -12,12 +12,15 @@ function RenderCard({item, isLoading, errMsg}){
         );
     }
     else if (errMsg){
+        console.log('else if ERRMSG ',item, isLoading, errMsg)
         return (
             <h4>{errMsg}</h4>
         );
     }
 
     else{
+        console.log('PASSED', item)
+
         return (
             <Card>
                 <CardImg src={baseUrl + item.image} alt={item.name}/>
@@ -33,7 +36,6 @@ function RenderCard({item, isLoading, errMsg}){
 }
 
 function Home(props){
-    console.log('home props', props)
     return (
         <div className='container'>
             <div className='row align-items-start'>

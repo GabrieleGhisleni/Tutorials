@@ -18,7 +18,7 @@ class RenderComment extends Component{
     }
 
     submitComment(event){
-        this.props.addComment(this.props.dishId, 3, event.author, event.comment)
+        this.props.postComment(this.props.dishId, 3, event.author, event.comment)
 
     }
 
@@ -91,7 +91,7 @@ class RenderComment extends Component{
 }
 
 
-function RenderDish({currentDish, comment, dishId, addComment}){
+function RenderDish({currentDish, comment, dishId, postComment}){
     return(
     <div className='row'>
         <div className='container'>
@@ -107,7 +107,7 @@ function RenderDish({currentDish, comment, dishId, addComment}){
                 </div>
                 <div className='col-12 col-md'>
                     <h5 style={{margin: '0px'}}>Comments:</h5>
-                    <RenderComment comments={comment} dishId={dishId} addComment={addComment}/>
+                    <RenderComment comments={comment} dishId={dishId} postComment={postComment}/>
                     
                 </div>
             </div>
@@ -119,7 +119,6 @@ function RenderDish({currentDish, comment, dishId, addComment}){
 }
 
 const DishDetail = (props) => {
-    console.log('dishdetail ', props)
     if (props.isLoading){
         return (
             <div className='container'>
@@ -156,7 +155,7 @@ const DishDetail = (props) => {
                 <div style={{marginTop:'30px'}}>
                     <RenderDish currentDish={dish} 
                     comment= {comment}
-                    addComment={props.addComment} 
+                    postComment={props.postComment} 
                     dishId={dish.id}/>
                 </div>
             </div>

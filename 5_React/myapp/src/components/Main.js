@@ -11,13 +11,17 @@ import {Loading} from './Loading';
 
 // Redux import
 import {connect} from 'react-redux';
-import {addComment, fetchDishes, fetchComments, fetchPromos} from '../redux/ActionCreators';
+import {addComment, fetchDishes, fetchComments, fetchPromos, postComment} from '../redux/ActionCreators';
 
 // Redux form
 import { actions } from 'react-redux-form';
 
 // React Router (withRouter is used for Redux)
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
+
+// animations
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
+
 
 
 // state of redux
@@ -37,6 +41,7 @@ const mapDispatchToProps = (dispatch) => ({
   resetFeedbackForm:() => dispatch(actions.reset('feedback')),
   fetchComments: () => {dispatch(fetchComments())},
   fetchPromos: () => {dispatch(fetchPromos())},
+  postComment: () => {dispatch(postComment())}
 
 });
 
@@ -48,7 +53,6 @@ class Main extends Component {
   }
 
   componentDidMount(){
-    console.log('HERE IN MAIN')
     this.props.fetchDishes();
     this.props.fetchPromos();
     this.props.fetchComments();
@@ -60,11 +64,11 @@ class Main extends Component {
         // it is only one wich has features === true.
         <Home 
           dishLoading ={this.props.dishes.isLoading}
-          dishErrMsg = {this.props.dishes.err}
+          dishErrMsg = {this.props.dishes.errMsg}
           dish={this.props.dishes.dishes.filter((dish) => dish.featured)[0]}
           promotion={this.props.promotions.promotions.filter((promo) => promo.featured)[0]}
           promosLoading={this.props.promotions.isLoading}
-          promosErrMsh={this.props.promotions.errMsg}
+          promosErrMsg={this.props.promotions.errMsg}
           leader={this.props.leaders.filter((leader) => leader.featured)[0]}
         />
 
@@ -72,7 +76,6 @@ class Main extends Component {
     }
 
     const DishWithId = ({match}) => {
-      console.log('insidediswh with id', this.props, this.props.dishes.isLoading)
       if (this.props.dishes.isLoading){
           return (
               <div className='container'>
@@ -103,7 +106,7 @@ class Main extends Component {
           dish={dish}
           comments={comment}
           commentsErrMsg={this.props.comments.errMsg}
-          addComment = {this.props.addComment}
+          postComment = {this.props.postComment}
         />
       );
     }}
@@ -111,14 +114,18 @@ class Main extends Component {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route path='/home' component={HomePage}/>
-          {/* since it requires argument we have to pass it as a function! */}
-          <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes}/>}/>
-          <Route path='/menu/:dishId' component={DishWithId}/>
-          <Route exact path='/contact' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />}/>
-          <Redirect to='/home' />
-        </Switch>
+        <TransitionGroup>
+          <CSSTransition key={this.props.location.key} classNames='page' timeout={1000}>
+            <Switch>
+              <Route path='/home' component={HomePage}/>
+              {/* since it requires argument we have to pass it as a function! */}
+              <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes}/>}/>
+              <Route path='/menu/:dishId' component={DishWithId}/>
+              <Route exact path='/contact' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />}/>
+              <Redirect to='/home' />
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
         <Footer />
       </div>
   )};

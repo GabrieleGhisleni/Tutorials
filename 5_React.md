@@ -701,3 +701,48 @@ fetch(BaseUrl + 'dishes')
 > install cross-fetch
 
 - alternatives are Axios.
+
+### Animantions and transictions
+
+> install react-transition-group
+
+must add into the css the following classes:
+
+```css
+.page-enter {
+    opacity:.01;
+    transform: translateX(-100%);
+}
+
+.page-enter-active{
+    opacity:1;
+    transform: translateX(0%)
+    transition: 100 300ms ease-in;
+}
+
+.page-exit{
+    opacity:1;
+    transform: translateX(0%);
+}
+
+.page-exit-active{
+    opacity:0.1;
+    transform: translateX(100%);
+    transition: 100 300ms ease-out;
+}
+```
+```js
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
+<TransitionGroup>
+    <CSSTransition key={this.props.location.key} classNames='page' timeout={1000}>
+    <Switch>
+        <Route path='/home' component={HomePage}/>
+        {/* since it requires argument we have to pass it as a function! */}
+        <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes}/>}/>
+        <Route path='/menu/:dishId' component={DishWithId}/>
+        <Route exact path='/contact' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} />}/>
+        <Redirect to='/home' />
+    </Switch>
+    </CSSTransition>
+</TransitionGroup>
+```

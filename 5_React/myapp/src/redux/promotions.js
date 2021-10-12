@@ -3,7 +3,7 @@ import * as ActionsTypes from './ActionsTypes';
 
 let defaultState = {
     isLoading: true,
-    errMessage: null,
+    errMsg: null,
     promotions: []
 }
 
