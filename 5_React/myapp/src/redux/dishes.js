@@ -9,7 +9,6 @@ let defaultState = {
 export const Dishes = (state = defaultState, action) => {
     switch (action.type) {
         case ActionsTypes.ADD_DISHES:
-            console.log('INSIDE DISHES:' , action.payload)
             return {...state, isLoading:false, errMsg:null, dishes: action.payload }
 
         case ActionsTypes.DISHES_LOADING:

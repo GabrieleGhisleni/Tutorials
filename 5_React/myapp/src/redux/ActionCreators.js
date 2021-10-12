@@ -1,5 +1,5 @@
 import * as ActionsTypes from './ActionsTypes';
-import { DISHES } from '../shared/dishes';
+import { baseUrl } from '../shared/baseUrl';
 
 export const addComment = (dishId, rating=2, author, comment) => ({
     type: ActionsTypes.ADD_COMMENT,
@@ -11,14 +11,15 @@ export const addComment = (dishId, rating=2, author, comment) => ({
     }
 });
 
+
 // return a function so this is a THUNK!
 export const fetchDishes = () => (dispatch) => {
     dispatch(dishesLoading(true))
-    console.log('HERE inside ActionCreators')
-
-    setTimeout(() => {
-        dispatch(addDishes(DISHES));
-    }, 2000);
+    return(
+        fetch(baseUrl + 'dishes')
+            .then(response => response.json())
+            .then(dishes => dispatch(addDishes(dishes)))
+    );
 };
 
 export const dishesLoading = () => ({
@@ -34,3 +35,46 @@ export const addDishes = (dishes) => ({
     type: ActionsTypes.ADD_DISHES,
     payload: dishes
 })
+
+
+
+// Comments
+export const fetchComments = () => (dispatch) => {
+    return(
+        fetch(baseUrl + 'comments')
+            .then(response => response.json())
+            .then(comment => dispatch(addComments(comment)))
+    );
+};
+
+export const commentsFailed = (errMsg) => ({
+    type: ActionsTypes.COMMENTS_FAILED,
+    payload: errMsg
+});
+
+export const addComments = (comments) => ({
+    type: ActionsTypes.ADD_COMMENTS,
+    payload: comments
+})
+
+// promotions
+
+export const fetchPromos = () => (dispatch) => {
+    return(
+        fetch(baseUrl + 'promotions')
+            .then(response => response.json())
+            .then(promo => dispatch(addPromo(promo)))
+    );
+};
+
+export const promoFailed = (errMsg) => ({
+    type: ActionsTypes.PROMOS_FAILED,
+    payload: errMsg
+});
+
+export const addPromo = (promos) => ({
+    type: ActionsTypes.ADD_PROMOS,
+    payload: promos
+})
+
+

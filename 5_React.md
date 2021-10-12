@@ -635,3 +635,69 @@ export default withRouter(connect(mapStateToProps)(Main));
 
 
 > install redux-tunk; redux-logger
+
+# Fetch
+
+## Promises
+
+A promise as a mechanism that supports asynchronous computations. in using a promise it provides a rpoxy for a value not necessarily known when the promise is created (return a proxy object that give you acess to results when it is available).
+
+a promise will be in pending state untill the results will arrive. 
+
+```js
+new Promise (function(resolve, reject){ ... }) // Promise is the fetch() functions.
+
+fetch()
+    .then(function(result)){...} // resolved
+    .then(function(result)){...} // chain 
+    .catch(function(error)){...} // rejected
+```
+
+promises can be chained.
+
+## Fetch abstractions:
+
+- Request represent a resoruce requeste
+- Response represent the response to a request
+- Headers represent response/request headers
+- Body provides methods relating to the body of the response/requests
+
+```js
+// GET OPERATION
+fetch(baseUrl + 'dishes')  //return a promise object
+    .then(response => response.json()) // transform it into a json data
+    .then(data => console.log(data)) //chain
+    .catch(error => console.log(error.message)) // if promise fails
+
+// POST OPERATION -> must specify the properties.
+let specific = {
+    method: 'POST',
+    body: JSON.stringify(newComment),
+    headers: {'Content-Type':'application/json'}
+    credentials: 'same-origin'
+}
+
+fetch(baseUrl + 'dishes', specific)  //return a promise object
+    .then(response => response.json()) // transform it into a json data
+    .then(data => console.log(data)) //chain
+    .catch(error => console.log(error.message)) // if promise fails
+
+// Dealing with errors
+fetch(BaseUrl + 'dishes')
+    .then(response => {
+        if (response.ok){return response}
+        else{
+            var error = new Error('Error' + response.status+ ': '+ response.statusText);
+            error.response = response;
+            throw error;
+        }
+     })
+     error => {
+         var errMsg= new Error(error.message);
+         throw errMsgM;
+     }
+     .then(response => {...})
+```
+> install cross-fetch
+
+- alternatives are Axios.

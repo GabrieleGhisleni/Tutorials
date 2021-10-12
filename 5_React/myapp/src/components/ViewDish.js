@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import { Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
 import {Control, LocalForm, Errors} from 'react-redux-form';
 import {Loading} from './Loading';
+import {baseUrl} from './../shared/baseUrl'
 
 class RenderComment extends Component{
     constructor(props){
@@ -97,7 +98,7 @@ function RenderDish({currentDish, comment, dishId, addComment}){
             <div className='row'>
                 <div className='col-12 col-md-5'>
                     <Card>
-                        <CardImg width='100%' src={currentDish.image} alt={currentDish.name} />
+                        <CardImg width='100%' src={baseUrl + currentDish.image} alt={currentDish.name} />
                         <CardBody>
                             <CardTitle>{currentDish.name}</CardTitle>
                             <CardText>{currentDish.description}</CardText>
@@ -118,6 +119,7 @@ function RenderDish({currentDish, comment, dishId, addComment}){
 }
 
 const DishDetail = (props) => {
+    console.log('dishdetail ', props)
     if (props.isLoading){
         return (
             <div className='container'>
