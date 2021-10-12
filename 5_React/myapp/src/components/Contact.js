@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem, Alert} from 'reactstrap';
 // form elements
-import { Button, Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
+import { Button, FormGroup, Label, Input, Col, Row } from 'reactstrap';
 import {Link} from 'react-router-dom';
-import {Control, LocalForm, Errors} from 'react-redux-form';
+import { Control, Form, Errors, actions } from 'react-redux-form';
 
 // since we are going to use form we transform this into a class so to save elements
 
@@ -24,6 +24,7 @@ class Contact extends Component{
     handleSubmit(values){
         console.log('current stat', JSON.stringify(values))
         alert('current stat', JSON.stringify(values))
+        this.props.resetFeedbackForm()
     }
 
     render(){
@@ -65,7 +66,7 @@ class Contact extends Component{
                     </div>
                     <div className='col-12 col-md-9'>
                     {/* Form with redux nomore from react */}
-                    <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+                    <Form model='feedback' onSubmit={(values) => this.handleSubmit(values)}>
                             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
@@ -144,7 +145,7 @@ class Contact extends Component{
                                     </Button>
                                 </Col>
                             </Row>
-                        </LocalForm>
+                        </Form>
                         
                     </div>
                 </div>
