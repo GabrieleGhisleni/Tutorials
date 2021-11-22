@@ -1,5 +1,8 @@
 /node_modules
 /5_React/node_modules
+/.ipynb_checkpoints
+/__pycache__
+/1. Pandas\Notebook\.ipynb_checkpoints
 
 *.json
 *DS_STORE

@@ -1,0 +1,144 @@
+header {
+    overflow: hidden;
+    border-bottom: black 5px solid;
+    background-color: cornsilk;
+}
+
+header h1{
+    color: cadetblue;
+    font-size: 3em;
+    font-weight: bold;
+    font-style: italic;
+    line-height: 150%;
+    display: inline-block;
+}
+
+.inline{
+    color: black;
+    display: inline;
+    float: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0em 2em 0em 0em;
+}
+
+.inlineTag{
+    color: cadetblue;
+    display: inline;
+    float: right;
+    font-size: 1.2em;
+    margin: 0em 2em 0em 0em;
+}
+
+
+section{
+    background-color: rgba(240, 119, 75,0.3);
+    overflow: hidden;
+
+}
+
+.thirty{
+    width: 30%;
+    margin: 1em auto 1em auto;
+    display: inline-block;
+    float: right;
+    position: relative;
+}
+
+.thirty p{
+    position: relative;
+    text-align: justify;
+    margin-right: 2em;
+    margin-top: 0.3em;
+    font-size: 1.2em;
+}
+
+section h2{
+    color: cadetblue;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+
+}
+
+section h1{
+    font-size: 2em;
+    position: relative;
+    font-weight: bold;
+    padding: 0em 1em 0em 1em;
+    font-weight: bold;
+    margin: 1em 1em 1em auto;
+    border-bottom: solid black 3px;
+}
+
+.seventy{
+    width: 70%;
+    margin: 1em auto 1em auto;
+    display: inline-block;
+    position: relative;
+
+}
+
+
+#subone{
+    width: 5%;
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    font-size: 1.5em;
+    float: left;
+    margin-left: 0.3em;
+    
+}
+
+#subtwo{
+    width: 90%;
+    position: relative;
+    display: inline-block;
+    float: right;
+    margin-right: 1.5em;
+    font-size: 1.3em;
+}
+
+#subtwo p{
+    position: relative;
+    float: right;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0 ;
+}
+
+#subone p{
+    position: relative;
+    float: left;
+    margin: 0 0 0 0;
+    padding: 0 0.5em 0em 0 ;
+    height: 150px;
+    line-height: 500%;
+    border-right: black solid 5px;
+}
+
+.container {
+    margin: 1em 0 0.3em 0;
+    padding: 1em 0 0.3em 0;
+    overflow: hidden;
+}
+
+footer{
+    background-color: cornsilk;
+    padding: 2em 2em 2em 2em;
+    color: brown;
+    font-size: 2em;
+    font-style: italic;
+    font-weight: bold;
+}
+
+footer div{
+    text-align: center;
+}
+
+footer p{
+    display: inline-block;
+}
+
+footer a{
+    padding-right: 1em;
+}
