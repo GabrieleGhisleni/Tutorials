@@ -1,5 +1,8 @@
 /12. MLOPS/notebooks
 
+*/mlruns
+*.pyc
+
 /node_modules
 /5_React/node_modules
 /.ipynb_checkpoints
